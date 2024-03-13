@@ -57,8 +57,24 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define MOTOR1_FORWARD_Pin GPIO_PIN_0
+#define MOTOR1_FORWARD_GPIO_Port GPIOA
+#define MOTOR1_BACKWARD_Pin GPIO_PIN_1
+#define MOTOR1_BACKWARD_GPIO_Port GPIOA
+#define MOTOR2_FORWARD_Pin GPIO_PIN_2
+#define MOTOR2_FORWARD_GPIO_Port GPIOA
+#define MOTOR2_BACKWARD_Pin GPIO_PIN_3
+#define MOTOR2_BACKWARD_GPIO_Port GPIOA
+#define MOTOR3_FORWARD_Pin GPIO_PIN_4
+#define MOTOR3_FORWARD_GPIO_Port GPIOA
+#define MOTOR3_BACKWARD_Pin GPIO_PIN_5
+#define MOTOR3_BACKWARD_GPIO_Port GPIOA
 #define LED_DEBUG_Pin GPIO_PIN_2
 #define LED_DEBUG_GPIO_Port GPIOB
+#define MOTOR4_FORWARD_Pin GPIO_PIN_8
+#define MOTOR4_FORWARD_GPIO_Port GPIOA
+#define MOTOR4_BACKWARD_Pin GPIO_PIN_9
+#define MOTOR4_BACKWARD_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

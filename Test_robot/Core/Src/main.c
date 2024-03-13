@@ -88,7 +88,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
-  MX_TIM1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   system_init();
   /* USER CODE END 2 */
@@ -153,8 +153,7 @@ void SystemClock_Config(void)
 void system_init(){
 	timer2_init();
 	timer2_set(50);
-	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
-	__HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_4, 10);
+	motor_init();
 }
 
 int led_debug_counter = 0;

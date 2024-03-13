@@ -1,0 +1,11 @@
+../Core/Src/motor.c:27:6:motor_init	8	static
+../Core/Src/motor.c:31:6:motor_dir_forward	16	static
+../Core/Src/motor.c:36:6:motor_dir_backward	16	static
+../Core/Src/motor.c:41:6:motor_stop	16	static
+../Core/Src/motor.c:47:6:motor_set_speed	16	static
+../Core/Src/motor.c:52:6:motor_run	16	static
+../Core/Src/motor.c:77:6:RunForward	4	static
+../Core/Src/motor.c:81:6:RunBackward	4	static
+../Core/Src/motor.c:85:6:Stop	4	static
+../Core/Src/motor.c:89:6:TurnLeft	4	static
+../Core/Src/motor.c:93:6:TurnRight	4	static
