@@ -19,11 +19,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "software_timer.h"
+#include "motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,6 +54,7 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 void system_init();
 void test_led();
+void test_motor();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -89,6 +92,7 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   system_init();
   /* USER CODE END 2 */
@@ -98,11 +102,11 @@ int main(void)
   while (1)
   {
 	  while(!timer2_flag);
-//	  if(timer2_flag){
 	  timer2_flag = 0;
 	  test_led();
-//	  }
-
+//	  motor_run();
+	  test_motor();
+//	  testing();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -163,6 +167,32 @@ void test_led(){
 		led_debug_counter = 0;
 		HAL_GPIO_TogglePin(LED_DEBUG_GPIO_Port, LED_DEBUG_Pin);
 	}
+}
+
+int count_motor = 0;
+int status_motor = 0;
+void test_motor(){
+	count_motor = (count_motor+1)%20;
+	if(count_motor != 0) return;
+	switch(status_motor){
+	case 0:
+		Stop();
+		status_motor = 1;
+		break;
+	case 1:
+		RunForward();
+		status_motor = 2;
+		break;
+	case 2:
+		Stop();
+		status_motor = 3;
+		break;
+	case 3:
+		RunBackward();
+		status_motor = 0;
+		break;
+	}
+	motor_run();
 }
 /* USER CODE END 4 */
 

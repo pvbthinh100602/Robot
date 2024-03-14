@@ -25,7 +25,10 @@ uint16_t motor_backward_pin[4] = {MOTOR1_BACKWARD_Pin, MOTOR2_BACKWARD_Pin, MOTO
 int motor_speed[4] = {0,0,0,0};
 
 void motor_init(){
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_ALL);
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 }
 
 void motor_dir_forward(int id){
@@ -47,6 +50,12 @@ void motor_stop(int id){
 void motor_set_speed(int id, int speed){
 	if(speed < 0 || speed > 100) return;
 	motor_speed[id] = speed;
+}
+
+void testing(){
+	HAL_GPIO_WritePin(GPIOA, motor_forward_pin[0], 1);
+	HAL_GPIO_WritePin(GPIOA, motor_backward_pin[0], 0);
+	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 80);
 }
 
 void motor_run(){
@@ -75,15 +84,32 @@ void motor_run(){
 }
 
 void RunForward(){
-
+	motor_set_speed(MOTOR1, 60);
+	motor_set_speed(MOTOR2, 60);
+	motor_set_speed(MOTOR3, 60);
+	motor_set_speed(MOTOR4, 60);
+	motor_dir_forward(MOTOR1);
+	motor_dir_forward(MOTOR2);
+	motor_dir_forward(MOTOR3);
+	motor_dir_forward(MOTOR4);
 }
 
 void RunBackward(){
-
+	motor_set_speed(MOTOR1, 60);
+	motor_set_speed(MOTOR2, 60);
+	motor_set_speed(MOTOR3, 60);
+	motor_set_speed(MOTOR4, 60);
+	motor_dir_backward(MOTOR1);
+	motor_dir_backward(MOTOR2);
+	motor_dir_backward(MOTOR3);
+	motor_dir_backward(MOTOR4);
 }
 
 void Stop(){
-
+	motor_stop(MOTOR1);
+	motor_stop(MOTOR2);
+	motor_stop(MOTOR3);
+	motor_stop(MOTOR4);
 }
 
 void TurnLeft(){
