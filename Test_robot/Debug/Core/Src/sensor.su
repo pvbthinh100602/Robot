@@ -1,0 +1,2 @@
+../Core/Src/sensor.c:21:6:getLineSensor	8	static
+../Core/Src/sensor.c:28:6:lineFollow	8	static

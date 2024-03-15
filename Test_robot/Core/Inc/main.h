@@ -75,6 +75,12 @@ void Error_Handler(void);
 #define MOTOR4_FORWARD_GPIO_Port GPIOA
 #define MOTOR4_BACKWARD_Pin GPIO_PIN_9
 #define MOTOR4_BACKWARD_GPIO_Port GPIOA
+#define LEFT_LINE_Pin GPIO_PIN_4
+#define LEFT_LINE_GPIO_Port GPIOB
+#define CENTER_LINE_Pin GPIO_PIN_5
+#define CENTER_LINE_GPIO_Port GPIOB
+#define RIGHT_LINE_Pin GPIO_PIN_6
+#define RIGHT_LINE_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

@@ -19,13 +19,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "tim.h"
-#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "software_timer.h"
 #include "motor.h"
+#include "sensor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -92,7 +92,6 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
-  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   system_init();
   /* USER CODE END 2 */
@@ -104,9 +103,12 @@ int main(void)
 	  while(!timer2_flag);
 	  timer2_flag = 0;
 	  test_led();
-//	  motor_run();
-	  test_motor();
+	  getLineSensor();
+	  lineFollow();
+	  motor_run();
+//	  test_motor();
 //	  testing();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

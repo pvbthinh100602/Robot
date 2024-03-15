@@ -8,16 +8,7 @@
 #include "motor.h"
 #include "tim.h"
 
-#define STOP		0
-#define FORWARD		1
-#define BACKWARD	2
-
 int motor_dir[4] = {STOP, STOP, STOP, STOP};
-
-#define MOTOR1 0
-#define MOTOR2 1
-#define MOTOR3 2
-#define MOTOR4 3
 
 uint16_t motor_forward_pin[4] = {MOTOR1_FORWARD_Pin, MOTOR2_FORWARD_Pin, MOTOR3_FORWARD_Pin, MOTOR4_FORWARD_Pin};
 uint16_t motor_backward_pin[4] = {MOTOR1_BACKWARD_Pin, MOTOR2_BACKWARD_Pin, MOTOR3_BACKWARD_Pin, MOTOR4_BACKWARD_Pin};
@@ -84,38 +75,52 @@ void motor_run(){
 }
 
 void RunForward(){
-	motor_set_speed(MOTOR1, 60);
-	motor_set_speed(MOTOR2, 60);
-	motor_set_speed(MOTOR3, 60);
-	motor_set_speed(MOTOR4, 60);
-	motor_dir_forward(MOTOR1);
-	motor_dir_forward(MOTOR2);
-	motor_dir_forward(MOTOR3);
-	motor_dir_forward(MOTOR4);
+	motor_set_speed(MOTOR_TOP_LEFT, 60);
+	motor_set_speed(MOTOR_BOT_LEFT, 60);
+	motor_set_speed(MOTOR_TOP_RIGHT, 60);
+	motor_set_speed(MOTOR_BOT_RIGHT, 60);
+	motor_dir_forward(MOTOR_TOP_LEFT);
+	motor_dir_forward(MOTOR_BOT_LEFT);
+	motor_dir_forward(MOTOR_TOP_RIGHT);
+	motor_dir_forward(MOTOR_BOT_RIGHT);
 }
 
 void RunBackward(){
-	motor_set_speed(MOTOR1, 60);
-	motor_set_speed(MOTOR2, 60);
-	motor_set_speed(MOTOR3, 60);
-	motor_set_speed(MOTOR4, 60);
-	motor_dir_backward(MOTOR1);
-	motor_dir_backward(MOTOR2);
-	motor_dir_backward(MOTOR3);
-	motor_dir_backward(MOTOR4);
+	motor_set_speed(MOTOR_TOP_LEFT, 60);
+	motor_set_speed(MOTOR_BOT_LEFT, 60);
+	motor_set_speed(MOTOR_TOP_RIGHT, 60);
+	motor_set_speed(MOTOR_BOT_RIGHT, 60);
+	motor_dir_backward(MOTOR_TOP_LEFT);
+	motor_dir_backward(MOTOR_BOT_LEFT);
+	motor_dir_backward(MOTOR_TOP_RIGHT);
+	motor_dir_backward(MOTOR_BOT_RIGHT);
 }
 
 void Stop(){
-	motor_stop(MOTOR1);
-	motor_stop(MOTOR2);
-	motor_stop(MOTOR3);
-	motor_stop(MOTOR4);
+	motor_stop(MOTOR_TOP_LEFT);
+	motor_stop(MOTOR_BOT_LEFT);
+	motor_stop(MOTOR_TOP_RIGHT);
+	motor_stop(MOTOR_BOT_RIGHT);
 }
 
 void TurnLeft(){
-
+	motor_set_speed(MOTOR_TOP_LEFT, 50);
+	motor_set_speed(MOTOR_BOT_LEFT, 50);
+	motor_set_speed(MOTOR_TOP_RIGHT, 50);
+	motor_set_speed(MOTOR_BOT_RIGHT, 50);
+	motor_dir_backward(MOTOR_TOP_LEFT);
+	motor_dir_backward(MOTOR_BOT_LEFT);
+	motor_dir_forward(MOTOR_TOP_RIGHT);
+	motor_dir_forward(MOTOR_BOT_RIGHT);
 }
 
 void TurnRight(){
-
+	motor_set_speed(MOTOR_TOP_LEFT, 50);
+	motor_set_speed(MOTOR_BOT_LEFT, 50);
+	motor_set_speed(MOTOR_TOP_RIGHT, 50);
+	motor_set_speed(MOTOR_BOT_RIGHT, 50);
+	motor_dir_forward(MOTOR_TOP_LEFT);
+	motor_dir_forward(MOTOR_BOT_LEFT);
+	motor_dir_backward(MOTOR_TOP_RIGHT);
+	motor_dir_backward(MOTOR_BOT_RIGHT);
 }
